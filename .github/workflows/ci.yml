@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  data-quality-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate synthetic data
+        run: cd data_generation && python3 generate_synthetic_data.py
+
+      - name: Run pytest data quality suite
+        run: pytest tests/ -v
+
+      - name: Run Alteryx-style workflow (smoke test)
+        run: python3 alteryx_style_workflow.py
+
+  sql-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install sqlfluff
+        run: pip install sqlfluff
+      - name: Lint SQL (Postgres dialect)
+        run: sqlfluff lint sql/01_schema_and_raw.sql sql/02_staging.sql sql/03_mart_dimensional_model.sql sql/04_data_quality_checks.sql --dialect postgres || true
+        # non-blocking for now (`|| true`) -- tighten once the team agrees on a house SQL style
