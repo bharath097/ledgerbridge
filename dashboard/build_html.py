@@ -1,0 +1,458 @@
+import json
+
+with open("../output/dashboard_data.json") as f:
+    DATA = json.load(f)
+
+DATA_JSON = json.dumps(DATA)
+
+HTML = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LedgerBridge — Donor-to-Ledger Reconciliation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root{
+    --ink:#152A20;
+    --ink-2:#1E3A2B;
+    --paper:#F1F1EC;
+    --paper-2:#E8E8E0;
+    --panel:#FBFBF8;
+    --brass:#AC8548;
+    --brass-dim:#D8C49C;
+    --text:#1B241D;
+    --text-mute:#5C6A61;
+    --line:#D8D8CD;
+    --ok:#2F6B4D;
+    --warn:#B3792B;
+    --bad:#AA3B2D;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:14px;}
+  h1,h2,h3{font-family:'Newsreader',serif;font-weight:500;margin:0;}
+  .mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;}
+  a{color:inherit;}
+
+  /* ---------- Header ---------- */
+  header{background:var(--ink);color:#EDEEE7;padding:28px 40px 0 40px;}
+  .header-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;}
+  .brand-eyebrow{font-size:12px;letter-spacing:.02em;color:var(--brass-dim);margin-bottom:4px;}
+  .brand-title{font-size:26px;color:#F6F5EE;}
+  .header-meta{font-size:12px;color:#A9B6AC;text-align:right;}
+  nav{display:flex;gap:28px;margin-top:22px;border-top:1px solid #2C4636;}
+  nav button{
+    background:none;border:none;color:#B9C4BB;font-family:'IBM Plex Sans',sans-serif;
+    font-size:14px;padding:14px 2px 12px 2px;cursor:pointer;border-bottom:2px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav button:hover{color:#EDEEE7;}
+  nav button.active{color:#F6F5EE;border-bottom:2px solid var(--brass);}
+
+  main{max-width:1180px;margin:0 auto;padding:34px 40px 80px 40px;}
+  .page{display:none;animation:fadein .35s ease;}
+  .page.active{display:block;}
+  @keyframes fadein{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+
+  .section-title{font-size:20px;margin-bottom:4px;}
+  .section-sub{color:var(--text-mute);font-size:13px;margin-bottom:20px;}
+
+  /* ---------- KPI ledger strip ---------- */
+  .kpi-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border-top:1px solid var(--text);margin-bottom:34px;}
+  .kpi{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .kpi:last-child{border-right:none;}
+  .kpi-label{font-size:11.5px;color:var(--text-mute);margin-bottom:8px;}
+  .kpi-value{font-size:25px;font-family:'IBM Plex Mono',monospace;}
+  .kpi-sub{font-size:12px;margin-top:4px;}
+  .up{color:var(--ok);}
+  .down{color:var(--bad);}
+
+  /* ---------- Layout grid ---------- */
+  .grid-2{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;margin-bottom:32px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px;}
+  @media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+
+  .panel{background:var(--panel);border:1px solid var(--line);padding:20px 22px;}
+  .panel-title{font-size:14px;margin-bottom:2px;}
+  .panel-sub{font-size:11.5px;color:var(--text-mute);margin-bottom:14px;}
+  canvas{max-width:100%;}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  thead th{
+    text-align:left;font-weight:500;font-size:11px;color:var(--text-mute);
+    border-bottom:1px solid var(--text);padding:8px 10px;
+  }
+  tbody td{padding:9px 10px;border-bottom:1px solid var(--line);}
+  tbody tr:hover{background:var(--paper-2);}
+  td.num{font-family:'IBM Plex Mono',monospace;text-align:right;font-variant-numeric:tabular-nums;}
+
+  .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;}
+  .status-ok{color:var(--ok);} .status-ok .status-dot{background:var(--ok);}
+  .status-warn{color:var(--warn);} .status-warn .status-dot{background:var(--warn);}
+  .status-bad{color:var(--bad);} .status-bad .status-dot{background:var(--bad);}
+
+  .legend-row{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--text-mute);margin-top:10px;}
+  .legend-row span{display:inline-flex;align-items:center;gap:6px;}
+  .legend-swatch{width:10px;height:10px;display:inline-block;}
+
+  /* Matrix heatmap */
+  .matrix-wrap{overflow-x:auto;}
+  #matrixTable{border-collapse:collapse;font-size:12px;}
+  #matrixTable th, #matrixTable td{padding:7px 10px;border:1px solid var(--line);text-align:right;font-family:'IBM Plex Mono',monospace;}
+  #matrixTable th{font-family:'IBM Plex Sans',sans-serif;text-align:left;color:var(--text-mute);font-weight:500;font-size:11px;}
+  #matrixTable td.rowhead{font-family:'IBM Plex Sans',sans-serif;text-align:left;color:var(--text);}
+
+  /* DQ gauge */
+  .gauge-wrap{display:flex;align-items:center;gap:24px;}
+  .gauge-num{font-family:'IBM Plex Mono',monospace;font-size:34px;}
+  .gauge-label{color:var(--text-mute);font-size:12px;}
+
+  footer{max-width:1180px;margin:0 auto;padding:0 40px 60px 40px;color:var(--text-mute);font-size:11.5px;border-top:1px solid var(--line);padding-top:16px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand-eyebrow">LEDGERBRIDGE</div>
+      <h1 class="brand-title">Donor-to-Ledger Reconciliation &amp; Retention</h1>
+    </div>
+    <div class="header-meta">
+      Fiscal Year __CURRENT_FY__ &middot; refreshed __GEN_DATE__<br>
+      Source: Salesforce (fundraising) + NetSuite-style GL (accounting)
+    </div>
+  </div>
+  <nav>
+    <button class="tab-btn active" data-page="p1">Executive Overview</button>
+    <button class="tab-btn" data-page="p2">Donor Retention</button>
+    <button class="tab-btn" data-page="p3">Fund Reconciliation</button>
+    <button class="tab-btn" data-page="p4">Data Quality</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ PAGE 1 ============ -->
+  <section class="page active" id="p1">
+    <div class="section-title">Executive Fundraising Overview</div>
+    <div class="section-sub">Fiscal-year giving performance against goal, with prior-year comparison.</div>
+
+    <div class="kpi-strip" id="kpiStrip"></div>
+
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-title">Monthly Giving — Current vs Prior Fiscal Year</div>
+        <div class="panel-sub">Fiscal year runs July&ndash;June</div>
+        <canvas id="trendChart" height="230"></canvas>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Top Funds by Revenue</div>
+        <div class="panel-sub">Fiscal-to-date</div>
+        <canvas id="topFundsChart" height="230"></canvas>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-title">Gift Type Mix</div>
+        <div class="panel-sub">Cash, pledge payments, stock, matching gifts</div>
+        <canvas id="giftTypeChart" height="200"></canvas>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Goal Attainment</div>
+        <div class="panel-sub">Total raised vs. combined campaign goals</div>
+        <div class="gauge-wrap" style="margin-top:18px;">
+          <canvas id="goalGauge" width="140" height="140"></canvas>
+          <div>
+            <div class="gauge-num" id="goalPct">&mdash;</div>
+            <div class="gauge-label">of combined campaign goal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2 ============ -->
+  <section class="page" id="p2">
+    <div class="section-title">Donor Retention &amp; Segmentation</div>
+    <div class="section-sub">New / Active / Lapsing / Lapsed, based on fiscal-year giving recency.</div>
+
+    <div class="kpi-strip" id="segStrip"></div>
+
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-title">Retention Rate by Fiscal Year</div>
+        <div class="panel-sub">% of prior-year donors who gave again</div>
+        <canvas id="retentionChart" height="220"></canvas>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Top Donors by RFM Score</div>
+        <div class="panel-sub">Recency &middot; Frequency &middot; Monetary composite (0&ndash;4 scale)</div>
+        <table>
+          <thead><tr><th>Donor</th><th>Segment</th><th style="text-align:right;">Lifetime</th><th style="text-align:right;">RFM</th></tr></thead>
+          <tbody id="topDonorsBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Revenue by Fund &times; Donor Segment</div>
+      <div class="panel-sub">Where lapsing-donor revenue risk is concentrated</div>
+      <div class="matrix-wrap"><table id="matrixTable"></table></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 3 ============ -->
+  <section class="page" id="p3">
+    <div class="section-title">Fund Reconciliation — Salesforce Gifts vs. NetSuite-style GL</div>
+    <div class="section-sub">Fund &times; fiscal-month comparison of recorded gift revenue against posted GL revenue.</div>
+
+    <div class="kpi-strip" id="reconStrip"></div>
+
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-title">Net Variance by Fund</div>
+        <div class="panel-sub">Gifts recorded minus GL posted, summed across all months</div>
+        <canvas id="varianceChart" height="240"></canvas>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Reconciliation Status</div>
+        <div class="panel-sub">Across all fund &times; fiscal-month combinations</div>
+        <canvas id="statusChart" height="240"></canvas>
+        <div class="legend-row" id="statusLegend"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Flagged for Review</div>
+      <div class="panel-sub">Largest unexplained variances — drill-through starting point for accounting</div>
+      <table>
+        <thead><tr><th>Fund</th><th>FY</th><th>Month</th><th style="text-align:right;">Gifts Recorded</th><th style="text-align:right;">GL Posted</th><th style="text-align:right;">Variance</th><th>Status</th></tr></thead>
+        <tbody id="flaggedBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 4 ============ -->
+  <section class="page" id="p4">
+    <div class="section-title">Data Quality Scorecard</div>
+    <div class="section-sub">Automated validation rules run after every pipeline load.</div>
+
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-title">Overall Pass Rate</div>
+        <div class="gauge-wrap" style="margin-top:10px;">
+          <canvas id="dqGauge" width="140" height="140"></canvas>
+          <div>
+            <div class="gauge-num" id="dqPct">&mdash;</div>
+            <div class="gauge-label" id="dqSub"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Checks by Severity</div>
+        <canvas id="dqSeverityChart" height="180"></canvas>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Validation Rules</div>
+      <table>
+        <thead><tr><th>Check</th><th>Table</th><th>Severity</th><th style="text-align:right;">Rows Affected</th><th>Result</th></tr></thead>
+        <tbody id="dqBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Synthetic data generated for portfolio purposes &middot; models a university-foundation fundraising and fund-accounting environment &middot; built with PostgreSQL, Python, and a Power-BI-style semantic layer.
+</footer>
+
+<script>
+const DATA = __DATA_JSON__;
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.page).classList.add('active');
+  });
+});
+
+function fmt(n){
+  if(n===null||n===undefined) return '—';
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+function fmtSigned(n){
+  const s = n<0 ? '-' : '+';
+  return s + '$' + Math.abs(Math.round(n)).toLocaleString('en-US');
+}
+
+const INK='#152A20', BRASS='#AC8548', OK='#2F6B4D', WARN='#B3792B', BAD='#AA3B2D', MUTE='#8B9A8F', LINE='#D8D8CD';
+Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
+Chart.defaults.color = '#5C6A61';
+Chart.defaults.font.size = 11.5;
+
+/* ---------------- PAGE 1 ---------------- */
+(function(){
+  const d = DATA.page1_overview;
+  const strip = document.getElementById('kpiStrip');
+  const yoyClass = d.yoy_growth>=0 ? 'up' : 'down';
+  const yoySign = d.yoy_growth>=0 ? '+' : '';
+  strip.innerHTML = `
+    <div class="kpi"><div class="kpi-label">TOTAL RAISED, FY${DATA.meta.current_fy}</div><div class="kpi-value">${fmt(d.ytd_total)}</div><div class="kpi-sub ${yoyClass}">${yoySign}${d.yoy_growth}% vs prior FY</div></div>
+    <div class="kpi"><div class="kpi-label">GOAL ATTAINMENT</div><div class="kpi-value">${d.goal_attainment_pct}%</div><div class="kpi-sub">of ${fmt(d.total_goal)} combined goal</div></div>
+    <div class="kpi"><div class="kpi-label">DONORS, FY${DATA.meta.current_fy}</div><div class="kpi-value">${d.donor_count.toLocaleString()}</div><div class="kpi-sub">unique donors giving</div></div>
+    <div class="kpi"><div class="kpi-label">AVERAGE GIFT</div><div class="kpi-value">${fmt(d.avg_gift)}</div><div class="kpi-sub">fiscal-to-date</div></div>
+  `;
+
+  const months = ['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun'];
+  new Chart(document.getElementById('trendChart'), {
+    type:'line',
+    data:{ labels:months, datasets: d.monthly_trend.map((s,i)=>({
+      label:s.fy_label, data:s.values, borderColor: i===1?INK:MUTE, backgroundColor:'transparent',
+      borderWidth: i===1?2.5:1.5, borderDash: i===1?[]:[4,3], tension:.3, pointRadius:2
+    }))},
+    options:{plugins:{legend:{position:'bottom'}}, scales:{y:{ticks:{callback:v=>'$'+(v/1000)+'k'}, grid:{color:LINE}}, x:{grid:{display:false}}}}
+  });
+
+  new Chart(document.getElementById('topFundsChart'), {
+    type:'bar',
+    data:{ labels: d.top_funds.map(f=>f.fund), datasets:[{data: d.top_funds.map(f=>f.amount), backgroundColor: BRASS}] },
+    options:{indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{ticks:{callback:v=>'$'+(v/1000)+'k'}, grid:{color:LINE}}, y:{grid:{display:false}}}}
+  });
+
+  new Chart(document.getElementById('giftTypeChart'), {
+    type:'doughnut',
+    data:{ labels:d.gift_type_mix.map(g=>g.type), datasets:[{data:d.gift_type_mix.map(g=>g.amount),
+      backgroundColor:[INK,BRASS,'#6E8577','#B7A281']}] },
+    options:{plugins:{legend:{position:'right'}}}
+  });
+
+  const pct = d.goal_attainment_pct;
+  document.getElementById('goalPct').textContent = pct + '%';
+  new Chart(document.getElementById('goalGauge'), {
+    type:'doughnut',
+    data:{ datasets:[{data:[pct, Math.max(0,100-pct)], backgroundColor:[BRASS, '#E5E3D8'], borderWidth:0}]},
+    options:{cutout:'72%', plugins:{legend:{display:false}, tooltip:{enabled:false}}}
+  });
+})();
+
+/* ---------------- PAGE 2 ---------------- */
+(function(){
+  const d = DATA.page2_retention;
+  const order = ['New','Active','Lapsing','Lapsed'];
+  const colors = {New:OK, Active:INK, Lapsing:WARN, Lapsed:BAD};
+  const strip = document.getElementById('segStrip');
+  strip.innerHTML = order.map(seg=>`
+    <div class="kpi"><div class="kpi-label">${seg.toUpperCase()} DONORS</div>
+      <div class="kpi-value" style="color:${colors[seg]}">${(d.segment_counts[seg]||0).toLocaleString()}</div>
+      ${seg==='Lapsing' ? `<div class="kpi-sub down">${fmt(d.revenue_at_risk)} lifetime value at risk</div>` : '<div class="kpi-sub">&nbsp;</div>'}
+    </div>`).join('');
+
+  new Chart(document.getElementById('retentionChart'), {
+    type:'bar',
+    data:{ labels: d.retention_by_fy.map(r=>'FY'+r.fiscal_year), datasets:[{data: d.retention_by_fy.map(r=>r.retention_rate), backgroundColor: INK}]},
+    options:{plugins:{legend:{display:false}}, scales:{y:{max:100, ticks:{callback:v=>v+'%'}, grid:{color:LINE}}, x:{grid:{display:false}}}}
+  });
+
+  document.getElementById('topDonorsBody').innerHTML = d.top_donors.map(r=>`
+    <tr><td>${r.donor}</td><td>${r.segment}</td><td class="num">${fmt(r.lifetime)}</td><td class="num">${r.rfm_score}</td></tr>
+  `).join('');
+
+  const m = d.matrix;
+  let head = '<tr><th>Fund</th>' + m.segments.map(s=>`<th style="text-align:right">${s}</th>`).join('') + '</tr>';
+  let rows = m.funds.map((f,i)=>{
+    const cells = m.values[i].map(v=>`<td>${fmt(v)}</td>`).join('');
+    return `<tr><td class="rowhead">${f}</td>${cells}</tr>`;
+  }).join('');
+  document.getElementById('matrixTable').innerHTML = head + rows;
+})();
+
+/* ---------------- PAGE 3 ---------------- */
+(function(){
+  const d = DATA.page3_reconciliation;
+  const strip = document.getElementById('reconStrip');
+  const diff = d.total_gifts - d.total_gl;
+  strip.innerHTML = `
+    <div class="kpi"><div class="kpi-label">TOTAL GIFTS RECORDED</div><div class="kpi-value">${fmt(d.total_gifts)}</div></div>
+    <div class="kpi"><div class="kpi-label">TOTAL GL POSTED</div><div class="kpi-value">${fmt(d.total_gl)}</div></div>
+    <div class="kpi"><div class="kpi-label">NET VARIANCE</div><div class="kpi-value ${Math.abs(diff)<5000?'up':'down'}">${fmtSigned(diff)}</div></div>
+    <div class="kpi"><div class="kpi-label">FUND-MONTHS NEEDING REVIEW</div><div class="kpi-value down">${(d.status_counts['Needs Review']||0)}</div></div>
+  `;
+
+  new Chart(document.getElementById('varianceChart'), {
+    type:'bar',
+    data:{ labels: d.by_fund_variance.map(f=>f.fund),
+      datasets:[{data: d.by_fund_variance.map(f=>f.variance),
+        backgroundColor: d.by_fund_variance.map(f=> f.variance<0 ? BAD : OK)}]},
+    options:{indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{ticks:{callback:v=>'$'+(v/1000).toFixed(1)+'k'}, grid:{color:LINE}}, y:{grid:{display:false}}}}
+  });
+
+  const sc = d.status_counts;
+  const labels = Object.keys(sc);
+  const colorMap = {'Reconciled':OK, 'Timing Difference (OK)':MUTE, 'Needs Review':BAD};
+  new Chart(document.getElementById('statusChart'), {
+    type:'doughnut',
+    data:{ labels, datasets:[{data: labels.map(l=>sc[l]), backgroundColor: labels.map(l=>colorMap[l])}]},
+    options:{plugins:{legend:{display:false}}}
+  });
+  document.getElementById('statusLegend').innerHTML = labels.map(l=>
+    `<span><span class="legend-swatch" style="background:${colorMap[l]}"></span>${l} (${sc[l]})</span>`).join('');
+
+  document.getElementById('flaggedBody').innerHTML = d.flagged.map(r=>`
+    <tr>
+      <td>${r.fund}</td><td>${r.fiscal_year}</td><td>${r.fiscal_month}</td>
+      <td class="num">${fmt(r.gifts_recorded)}</td><td class="num">${fmt(r.gl_posted)}</td>
+      <td class="num">${fmtSigned(r.variance)}</td>
+      <td class="status-bad"><span class="status-dot"></span>${r.status}</td>
+    </tr>`).join('');
+})();
+
+/* ---------------- PAGE 4 ---------------- */
+(function(){
+  const d = DATA.page4_dataquality;
+  document.getElementById('dqPct').textContent = d.pass_rate + '%';
+  document.getElementById('dqSub').textContent = `${d.passed_checks} of ${d.total_checks} checks passing`;
+  const rate = d.pass_rate;
+  new Chart(document.getElementById('dqGauge'), {
+    type:'doughnut',
+    data:{ datasets:[{data:[rate, 100-rate], backgroundColor:[rate>=80?OK:(rate>=50?WARN:BAD), '#E5E3D8'], borderWidth:0}]},
+    options:{cutout:'72%', plugins:{legend:{display:false}, tooltip:{enabled:false}}}
+  });
+
+  const bySev = {critical:0, warning:0};
+  d.checks.forEach(c=>{ if(!c.passed) bySev[c.severity]++; });
+  new Chart(document.getElementById('dqSeverityChart'), {
+    type:'bar',
+    data:{ labels:['Critical failures','Warning failures'], datasets:[{data:[bySev.critical, bySev.warning], backgroundColor:[BAD, WARN]}]},
+    options:{indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{grid:{color:LINE}, ticks:{stepSize:1}}, y:{grid:{display:false}}}}
+  });
+
+  document.getElementById('dqBody').innerHTML = d.checks.map(c=>{
+    const cls = c.passed ? 'status-ok' : (c.severity==='critical' ? 'status-bad' : 'status-warn');
+    const label = c.passed ? 'Pass' : 'Fail';
+    return `<tr><td>${c.name}</td><td>${c.table}</td><td>${c.severity}</td><td class="num">${c.affected}</td>
+      <td class="${cls}"><span class="status-dot"></span>${label}</td></tr>`;
+  }).join('');
+})();
+</script>
+
+</body>
+</html>
+"""
+
+HTML = HTML.replace("__DATA_JSON__", DATA_JSON)
+HTML = HTML.replace("__CURRENT_FY__", str(DATA["meta"]["current_fy"]))
+HTML = HTML.replace("__GEN_DATE__", DATA["meta"]["generated_at"][:10])
+
+with open("ledgerbridge_dashboard.html", "w") as f:
+    f.write(HTML)
+
+print("Dashboard written to ledgerbridge_dashboard.html")
