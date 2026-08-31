@@ -1,0 +1,5 @@
+Salesforce (Contacts, Opportunities, Pledges)  ---\
+                                                    >  RAW  ->  STAGING (clean/dedupe)  ->  MART (star schema)  -> Power BI (4 pages) + SSRS-style paginated report
+NetSuite-style GL export (CoA, Subsidiaries)   ---/                                            |
+                                                                                                  -> mart.dq_results (Data Quality Scorecard)
+Manual adjustments spreadsheet -> alteryx_style_workflow.py -> clean_donor_adjustments.csv / errors_log.csv
