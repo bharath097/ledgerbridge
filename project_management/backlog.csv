@@ -1,0 +1,29 @@
+Issue Type,Epic,Summary,Story Points,Status,Sprint
+Epic,,Source data ingestion,,Done,
+Story,Source data ingestion,Build synthetic Salesforce-style donor/gift/pledge generator,5,Done,Sprint 1
+Story,Source data ingestion,Build synthetic NetSuite-style GL export generator with fund accounting logic,5,Done,Sprint 1
+Story,Source data ingestion,Inject realistic data quality issues for reconciliation testing,3,Done,Sprint 1
+Story,Source data ingestion,Wire up real Salesforce Developer Org extraction via SOQL,5,Done,Sprint 1
+Epic,,Warehouse build,,Done,
+Story,Warehouse build,Design raw/staging/mart schema layout,3,Done,Sprint 2
+Story,Warehouse build,Write staging cleaning/dedup views,3,Done,Sprint 2
+Story,Warehouse build,Design star schema (facts + dimensions),5,Done,Sprint 2
+Story,Warehouse build,Write dim_date load procedure (fiscal year Jul-Jun),2,Done,Sprint 2
+Story,Warehouse build,Write dims/facts load procedure,5,Done,Sprint 2
+Story,Warehouse build,Write donor segmentation function (New/Active/Lapsing/Lapsed),3,Done,Sprint 2
+Story,Warehouse build,Write fund reconciliation view,5,Done,Sprint 2
+Story,Warehouse build,Port core objects to T-SQL for multi-database demo,3,Done,Sprint 2
+Epic,,Data quality & governance,,Done,
+Story,Data quality & governance,Build automated SQL data quality check suite,5,Done,Sprint 3
+Story,Data quality & governance,Write pytest unit tests for pipeline integrity rules,3,Done,Sprint 3
+Story,Data quality & governance,Design role-based access (analyst_readonly vs data_engineer),2,Done,Sprint 3
+Story,Data quality & governance,Write incident log documenting each discrepancy found,3,Done,Sprint 3
+Epic,,Reporting & analytics,,Done,
+Story,Reporting & analytics,Build Alteryx-style manual adjustments workflow,3,Done,Sprint 3
+Story,Reporting & analytics,Build Power BI-style 4-page dashboard,8,Done,Sprint 4
+Story,Reporting & analytics,Build SSRS-style paginated fund reconciliation statement,3,Done,Sprint 4
+Epic,,DevOps & documentation,,Done,
+Story,DevOps & documentation,Set up GitHub Actions CI for tests + SQL lint,2,Done,Sprint 4
+Story,DevOps & documentation,Write pipeline orchestration entry point + logging,3,Done,Sprint 4
+Story,DevOps & documentation,Write data dictionary and ERD,3,Done,Sprint 4
+Story,DevOps & documentation,Final README + architecture pass,2,Done,Sprint 4
