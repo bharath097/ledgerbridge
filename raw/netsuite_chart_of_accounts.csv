@@ -1,0 +1,11 @@
+account_number,account_name,account_type
+1000,Cash - Operating,Bank
+1100,Cash - Investment Pool,Bank
+4000,Contribution Revenue - Unrestricted,Income
+4100,Contribution Revenue - Restricted,Income
+4200,Pledge Revenue,Income
+4300,Investment Income,Income
+5000,Scholarship Disbursements,Expense
+5100,Grant Expense,Expense
+5200,Administrative Expense,Expense
+5300,Fundraising Expense,Expense

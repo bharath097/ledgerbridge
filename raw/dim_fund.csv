@@ -1,0 +1,9 @@
+fund_id,fund_name,fund_type,restriction_type
+FND-001,General Scholarship Fund,Scholarship,Restricted
+FND-002,Athletics Excellence Fund,Athletics,Restricted
+FND-003,Presidential Endowment,Endowment,Restricted
+FND-004,Annual Giving Fund,Annual,Unrestricted
+FND-005,STEM Innovation Fund,Program,Restricted
+FND-006,Library Modernization Fund,Capital,Restricted
+FND-007,First-Gen Student Support,Scholarship,Restricted
+FND-008,Faculty Research Grants,Program,Restricted

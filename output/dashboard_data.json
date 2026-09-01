@@ -1,0 +1,475 @@
+{
+  "meta": {
+    "current_fy": 2026,
+    "prior_fy": 2025,
+    "generated_at": "2026-09-07T06:20:50.148275"
+  },
+  "page1_overview": {
+    "ytd_total": 634274.0,
+    "prior_total": 634267.0,
+    "yoy_growth": 0.0,
+    "donor_count": 996,
+    "avg_gift": 312.3,
+    "total_goal": 1950000.0,
+    "goal_attainment_pct": 32.5,
+    "monthly_trend": [
+      {
+        "fy_label": "Prior FY",
+        "values": [
+          55488.0,
+          58530.0,
+          56939.0,
+          54145.0,
+          45205.0,
+          57166.0,
+          56456.0,
+          46105.0,
+          49992.0,
+          54005.0,
+          53755.0,
+          46481.0
+        ]
+      },
+      {
+        "fy_label": "Current FY",
+        "values": [
+          44443.0,
+          55983.0,
+          53203.0,
+          53164.0,
+          61199.0,
+          51023.0,
+          46110.0,
+          55044.0,
+          40660.0,
+          56001.0,
+          56030.0,
+          61415.0
+        ]
+      }
+    ],
+    "top_funds": [
+      {
+        "fund": "Annual Giving Fund",
+        "amount": 268148.0
+      },
+      {
+        "fund": "First-Gen Student Support",
+        "amount": 260328.0
+      },
+      {
+        "fund": "Presidential Endowment",
+        "amount": 258209.0
+      },
+      {
+        "fund": "Faculty Research Grants",
+        "amount": 251647.0
+      },
+      {
+        "fund": "General Scholarship Fund",
+        "amount": 247388.0
+      },
+      {
+        "fund": "Athletics Excellence Fund",
+        "amount": 244795.0
+      },
+      {
+        "fund": "Library Modernization Fund",
+        "amount": 227144.0
+      },
+      {
+        "fund": "STEM Innovation Fund",
+        "amount": 226546.0
+      }
+    ],
+    "gift_type_mix": [
+      {
+        "type": "Cash",
+        "amount": 1110790.0
+      },
+      {
+        "type": "Matching Gift",
+        "amount": 199792.0
+      },
+      {
+        "type": "Pledge Payment",
+        "amount": 477827.0
+      },
+      {
+        "type": "Stock",
+        "amount": 198866.0
+      }
+    ]
+  },
+  "page2_retention": {
+    "segment_counts": {
+      "Active": 966,
+      "Lapsing": 167,
+      "Lapsed": 40,
+      "New": 30
+    },
+    "revenue_at_risk": 228212.0,
+    "retention_by_fy": [
+      {
+        "fiscal_year": 2025,
+        "retention_rate": 78.3
+      },
+      {
+        "fiscal_year": 2026,
+        "retention_rate": 82.5
+      }
+    ],
+    "top_donors": [
+      {
+        "donor": "Amanda Ford",
+        "segment": "Active",
+        "lifetime": 3269.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Mckee, Thompson and Richardson",
+        "segment": "Active",
+        "lifetime": 3174.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "frank campbell",
+        "segment": "Active",
+        "lifetime": 2951.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Bruce Martinez",
+        "segment": "Active",
+        "lifetime": 2856.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Hernandez, Barber and Scott",
+        "segment": "Active",
+        "lifetime": 3049.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Alexander Floyd",
+        "segment": "Active",
+        "lifetime": 3541.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Doris Thomas",
+        "segment": "Active",
+        "lifetime": 3397.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "David Washington",
+        "segment": "Active",
+        "lifetime": 2540.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Eric Archer",
+        "segment": "Active",
+        "lifetime": 2700.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Keith Smith",
+        "segment": "Active",
+        "lifetime": 5387.0,
+        "rfm_score": 2.67
+      }
+    ],
+    "matrix": {
+      "funds": [
+        "Annual Giving Fund",
+        "Athletics Excellence Fund",
+        "Faculty Research Grants",
+        "First-Gen Student Support",
+        "General Scholarship Fund",
+        "Library Modernization Fund",
+        "Presidential Endowment",
+        "STEM Innovation Fund"
+      ],
+      "segments": [
+        "Active",
+        "Lapsed",
+        "Lapsing",
+        "New"
+      ],
+      "values": [
+        [
+          227380.0,
+          2855.0,
+          29789.0,
+          8124.0
+        ],
+        [
+          214067.0,
+          1510.0,
+          27494.0,
+          1723.0
+        ],
+        [
+          220747.0,
+          3969.0,
+          24423.0,
+          2509.0
+        ],
+        [
+          227102.0,
+          1680.0,
+          29180.0,
+          2365.0
+        ],
+        [
+          202055.0,
+          2031.0,
+          39052.0,
+          4250.0
+        ],
+        [
+          205579.0,
+          1276.0,
+          18859.0,
+          1429.0
+        ],
+        [
+          222292.0,
+          3073.0,
+          30815.0,
+          2029.0
+        ],
+        [
+          196720.0,
+          901.0,
+          27483.0,
+          1442.0
+        ]
+      ]
+    }
+  },
+  "page3_reconciliation": {
+    "status_counts": {
+      "Reconciled": 187,
+      "Needs Review": 108,
+      "Timing Difference (OK)": 10
+    },
+    "by_fund_variance": [
+      {
+        "fund": "First-Gen Student Support",
+        "variance": -1407.0
+      },
+      {
+        "fund": "Athletics Excellence Fund",
+        "variance": -1240.0
+      },
+      {
+        "fund": "Annual Giving Fund",
+        "variance": -424.0
+      },
+      {
+        "fund": "Library Modernization Fund",
+        "variance": 616.0
+      },
+      {
+        "fund": "Presidential Endowment",
+        "variance": 1998.0
+      },
+      {
+        "fund": "Faculty Research Grants",
+        "variance": 3286.0
+      },
+      {
+        "fund": "STEM Innovation Fund",
+        "variance": 3795.0
+      },
+      {
+        "fund": "General Scholarship Fund",
+        "variance": 3914.0
+      }
+    ],
+    "flagged": [
+      {
+        "fund": "General Scholarship Fund",
+        "fiscal_year": 2024,
+        "fiscal_month": 10,
+        "gifts_recorded": 7309.0,
+        "gl_posted": 3404.0,
+        "variance": 3906.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "General Scholarship Fund",
+        "fiscal_year": 2024,
+        "fiscal_month": 5,
+        "gifts_recorded": 9802.0,
+        "gl_posted": 6406.0,
+        "variance": 3396.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Athletics Excellence Fund",
+        "fiscal_year": 2024,
+        "fiscal_month": 5,
+        "gifts_recorded": 5523.0,
+        "gl_posted": 8908.0,
+        "variance": -3385.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "General Scholarship Fund",
+        "fiscal_year": 2024,
+        "fiscal_month": 11,
+        "gifts_recorded": 5606.0,
+        "gl_posted": 8843.0,
+        "variance": -3237.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Library Modernization Fund",
+        "fiscal_year": 2025,
+        "fiscal_month": 10,
+        "gifts_recorded": 6790.0,
+        "gl_posted": 3972.0,
+        "variance": 2818.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "General Scholarship Fund",
+        "fiscal_year": 2026,
+        "fiscal_month": 6,
+        "gifts_recorded": 5967.0,
+        "gl_posted": 8574.0,
+        "variance": -2607.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Library Modernization Fund",
+        "fiscal_year": 2027,
+        "fiscal_month": 1,
+        "gifts_recorded": 0.0,
+        "gl_posted": 2571.0,
+        "variance": -2571.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Library Modernization Fund",
+        "fiscal_year": 2025,
+        "fiscal_month": 11,
+        "gifts_recorded": 8958.0,
+        "gl_posted": 11527.0,
+        "variance": -2570.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "General Scholarship Fund",
+        "fiscal_year": 2026,
+        "fiscal_month": 5,
+        "gifts_recorded": 6878.0,
+        "gl_posted": 4363.0,
+        "variance": 2515.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Athletics Excellence Fund",
+        "fiscal_year": 2024,
+        "fiscal_month": 2,
+        "gifts_recorded": 8480.0,
+        "gl_posted": 6022.0,
+        "variance": 2458.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "STEM Innovation Fund",
+        "fiscal_year": 2024,
+        "fiscal_month": 4,
+        "gifts_recorded": 16271.0,
+        "gl_posted": 13818.0,
+        "variance": 2453.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Athletics Excellence Fund",
+        "fiscal_year": 2024,
+        "fiscal_month": 3,
+        "gifts_recorded": 6217.0,
+        "gl_posted": 8613.0,
+        "variance": -2396.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Library Modernization Fund",
+        "fiscal_year": 2026,
+        "fiscal_month": 12,
+        "gifts_recorded": 9110.0,
+        "gl_posted": 6793.0,
+        "variance": 2317.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Faculty Research Grants",
+        "fiscal_year": 2025,
+        "fiscal_month": 4,
+        "gifts_recorded": 10308.0,
+        "gl_posted": 8100.0,
+        "variance": 2208.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Annual Giving Fund",
+        "fiscal_year": 2025,
+        "fiscal_month": 5,
+        "gifts_recorded": 3820.0,
+        "gl_posted": 6027.0,
+        "variance": -2207.0,
+        "status": "Needs Review"
+      }
+    ],
+    "total_gifts": 1987275.0,
+    "total_gl": 1976736.0
+  },
+  "page4_dataquality": {
+    "checks": [
+      {
+        "name": "Fund ID references valid dim_fund",
+        "table": "salesforce_opportunities",
+        "severity": "critical",
+        "affected": 12,
+        "passed": false
+      },
+      {
+        "name": "Every gift has a matching GL entry",
+        "table": "fact_gl_transactions",
+        "severity": "critical",
+        "affected": 44,
+        "passed": false
+      },
+      {
+        "name": "paid_amount <= pledged_amount",
+        "table": "fact_pledges",
+        "severity": "warning",
+        "affected": 8,
+        "passed": false
+      },
+      {
+        "name": "GL transactions balance (debit = credit)",
+        "table": "fact_gl_transactions",
+        "severity": "critical",
+        "affected": 4,
+        "passed": false
+      },
+      {
+        "name": "Fund/month reconciliation within tolerance",
+        "table": "fund_reconciliation",
+        "severity": "warning",
+        "affected": 108,
+        "passed": false
+      }
+    ],
+    "pass_rate": 0.0,
+    "total_checks": 5,
+    "passed_checks": 0
+  }
+}

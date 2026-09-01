@@ -1,0 +1,48 @@
+adjustment_id,donor_name,fund_id,adjustment_amount,reason,fund_name,fund_type,restriction_type
+ADJ-0001,Christine Wilson Dds,FND-006,4690.71,Reclass,Library Modernization Fund,Capital,Restricted
+ADJ-0002,Valerie Nguyen,FND-008,-2198.69,Correction,Faculty Research Grants,Program,Restricted
+ADJ-0003,Stacey Baker,FND-008,2116.89,Reclass,Faculty Research Grants,Program,Restricted
+ADJ-0005,Miss Alexandra Kelly,FND-007,-1345.0,Pledge write-off,First-Gen Student Support,Scholarship,Restricted
+ADJ-0006,Diana Scott,FND-003,-526.77,Reclass,Presidential Endowment,Endowment,Restricted
+ADJ-0007,Matthew Parrish,FND-008,1862.6,Correction,Faculty Research Grants,Program,Restricted
+ADJ-0008,Lauren Sharp,FND-006,-2360.32,Reclass,Library Modernization Fund,Capital,Restricted
+ADJ-0009,Theresa Scott,FND-001,-3188.5,Pledge write-off,General Scholarship Fund,Scholarship,Restricted
+ADJ-0010,Lindsey Harris,FND-004,-4899.78,Reclass,Annual Giving Fund,Annual,Unrestricted
+ADJ-0011,Frederick Harris,FND-003,-2376.43,Correction,Presidential Endowment,Endowment,Restricted
+ADJ-0012,Shannon Foster,FND-001,4193.44,Refund,General Scholarship Fund,Scholarship,Restricted
+ADJ-0014,John Crawford,FND-006,-2652.12,Refund,Library Modernization Fund,Capital,Restricted
+ADJ-0015,Robert Thompson,FND-003,-3014.93,Pledge write-off,Presidential Endowment,Endowment,Restricted
+ADJ-0016,Terri White,FND-006,-2589.58,Refund,Library Modernization Fund,Capital,Restricted
+ADJ-0017,Eric Mcclure,FND-006,-227.12,Pledge write-off,Library Modernization Fund,Capital,Restricted
+ADJ-0018,Melissa Lopez,FND-006,-2892.79,Reclass,Library Modernization Fund,Capital,Restricted
+ADJ-0019,Jeffery Gibson,FND-001,-3429.06,Reclass,General Scholarship Fund,Scholarship,Restricted
+ADJ-0020,Jennifer Ramsey,FND-003,1097.94,Refund,Presidential Endowment,Endowment,Restricted
+ADJ-0021,Paul Smith,FND-005,-3503.47,Reclass,STEM Innovation Fund,Program,Restricted
+ADJ-0022,James Rodriguez,FND-006,-2488.85,Correction,Library Modernization Fund,Capital,Restricted
+ADJ-0023,Ronald Michael,FND-007,2916.01,Reclass,First-Gen Student Support,Scholarship,Restricted
+ADJ-0024,Randy Adams,FND-006,517.08,Pledge write-off,Library Modernization Fund,Capital,Restricted
+ADJ-0025,Linda Sparks,FND-006,-4876.84,Refund,Library Modernization Fund,Capital,Restricted
+ADJ-0029,Elizabeth Mendoza,FND-008,2484.98,Pledge write-off,Faculty Research Grants,Program,Restricted
+ADJ-0030,Joshua Adams,FND-006,2661.53,Correction,Library Modernization Fund,Capital,Restricted
+ADJ-0031,Alisha Williams,FND-006,2239.49,Refund,Library Modernization Fund,Capital,Restricted
+ADJ-0032,Ashley Tanner,FND-003,384.92,Reclass,Presidential Endowment,Endowment,Restricted
+ADJ-0033,Aaron Walker,FND-008,4370.8,Refund,Faculty Research Grants,Program,Restricted
+ADJ-0035,Thomas Cohen,FND-005,2472.65,Pledge write-off,STEM Innovation Fund,Program,Restricted
+ADJ-0036,Michelle Valenzuela,FND-008,3294.31,Correction,Faculty Research Grants,Program,Restricted
+ADJ-0038,Billy Cook,FND-008,-2884.56,Correction,Faculty Research Grants,Program,Restricted
+ADJ-0040,Chris Patterson,FND-002,58.77,Reclass,Athletics Excellence Fund,Athletics,Restricted
+ADJ-0041,Christopher Coleman,FND-007,2044.55,Refund,First-Gen Student Support,Scholarship,Restricted
+ADJ-0042,Melissa Weber,FND-008,-470.99,Correction,Faculty Research Grants,Program,Restricted
+ADJ-0043,Shawn Nelson,FND-006,-2301.71,Correction,Library Modernization Fund,Capital,Restricted
+ADJ-0044,Mr. Derek Meadows Dds,FND-004,-3453.13,Refund,Annual Giving Fund,Annual,Unrestricted
+ADJ-0045,Shannon Spence,FND-003,2716.1,Correction,Presidential Endowment,Endowment,Restricted
+ADJ-0047,Robert Bray,FND-004,-4556.35,Refund,Annual Giving Fund,Annual,Unrestricted
+ADJ-0049,Brianna Morris,FND-007,187.0,Reclass,First-Gen Student Support,Scholarship,Restricted
+ADJ-0050,Randall Gomez,FND-001,4743.57,Refund,General Scholarship Fund,Scholarship,Restricted
+ADJ-0051,John Dudley Dds,FND-008,1940.17,Pledge write-off,Faculty Research Grants,Program,Restricted
+ADJ-0052,Brenda Raymond,FND-001,2502.0,Refund,General Scholarship Fund,Scholarship,Restricted
+ADJ-0053,Janet Dunn,FND-007,-1233.96,Reclass,First-Gen Student Support,Scholarship,Restricted
+ADJ-0057,Brandon Ward,FND-001,2625.27,Correction,General Scholarship Fund,Scholarship,Restricted
+ADJ-0058,Samuel Cox,FND-004,-4005.38,Correction,Annual Giving Fund,Annual,Unrestricted
+ADJ-0059,Casey Rodriguez,FND-001,-4743.33,Refund,General Scholarship Fund,Scholarship,Restricted
+ADJ-0060,Heather Atkinson,FND-005,4815.59,Reclass,STEM Innovation Fund,Program,Restricted

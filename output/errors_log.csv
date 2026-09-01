@@ -1,0 +1,14 @@
+adjustment_id,donor_name,fund_id,adjustment_amount,reason,fund_name,fund_type,restriction_type,error_reason
+ADJ-0004,Steven Phillips,FND-004,,Pledge write-off,Annual Giving Fund,Annual,Unrestricted,Missing adjustment_amount
+ADJ-0013,Nicholas Hamilton,FND-OLD-12,772.55,Reclass,,,,fund_id not found in dim_fund
+ADJ-0026,Rickey Daniels,FND-OLD-12,,Reclass,,,,Missing adjustment_amount
+ADJ-0027,Sarah Miller,FND-OLD-12,1131.0,Reclass,,,,fund_id not found in dim_fund
+ADJ-0028,Peter Stafford,FND-OLD-12,193.92,Correction,,,,fund_id not found in dim_fund
+ADJ-0034,James Gomez,FND-003,,Correction,Presidential Endowment,Endowment,Restricted,Missing adjustment_amount
+ADJ-0037,William Walker Dvm,FND-OLD-12,4248.73,Correction,,,,fund_id not found in dim_fund
+ADJ-0039,Tim Miller,FND-006,,Reclass,Library Modernization Fund,Capital,Restricted,Missing adjustment_amount
+ADJ-0046,Bridget Hernandez,FND-OLD-12,-3779.76,Correction,,,,fund_id not found in dim_fund
+ADJ-0048,Ashley Simmons,FND-OLD-12,,Reclass,,,,Missing adjustment_amount
+ADJ-0054,Katherine Herrera,FND-005,,Pledge write-off,STEM Innovation Fund,Program,Restricted,Missing adjustment_amount
+ADJ-0055,Bradley Espinoza,FND-OLD-12,-3598.29,Pledge write-off,,,,fund_id not found in dim_fund
+ADJ-0056,Paula Shepherd,FND-OLD-12,1773.61,Correction,,,,fund_id not found in dim_fund

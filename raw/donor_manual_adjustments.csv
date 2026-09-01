@@ -1,0 +1,61 @@
+adjustment_id,donor_name,fund_id,adjustment_amount,reason
+ADJ-0001,Christine Wilson DDS,FND-006,4690.71,Reclass
+ADJ-0002,  VALERIE NGUYEN  ,FND-008,-2198.69,Correction
+ADJ-0003,Stacey Baker,FND-008,2116.89,Reclass
+ADJ-0004,  STEVEN PHILLIPS  ,FND-004,,Pledge write-off
+ADJ-0005,Miss Alexandra Kelly,FND-007,-1345.0,Pledge write-off
+ADJ-0006,Diana Scott,FND-003,-526.77,Reclass
+ADJ-0007,Matthew Parrish,FND-008,1862.6,Correction
+ADJ-0008,Lauren Sharp,FND-006,-2360.32,Reclass
+ADJ-0009,Theresa Scott,FND-001,-3188.5,Pledge write-off
+ADJ-0010,Lindsey Harris,FND-004,-4899.78,Reclass
+ADJ-0011,  FREDERICK HARRIS  ,FND-003,-2376.43,Correction
+ADJ-0012,Shannon Foster,FND-001,4193.44,Refund
+ADJ-0013,  NICHOLAS HAMILTON  ,FND-OLD-12,772.55,Reclass
+ADJ-0014,John Crawford,FND-006,-2652.12,Refund
+ADJ-0015,Robert Thompson,FND-003,-3014.93,Pledge write-off
+ADJ-0016,  TERRI WHITE  ,FND-006,-2589.58,Refund
+ADJ-0017,Eric Mcclure,FND-006,-227.12,Pledge write-off
+ADJ-0018,Melissa Lopez,FND-006,-2892.79,Reclass
+ADJ-0019,Jeffery Gibson,FND-001,-3429.06,Reclass
+ADJ-0020,Jennifer Ramsey,FND-003,1097.94,Refund
+ADJ-0021,  PAUL SMITH  ,FND-005,-3503.47,Reclass
+ADJ-0022,James Rodriguez,FND-006,-2488.85,Correction
+ADJ-0023,Ronald Michael,FND-007,2916.01,Reclass
+ADJ-0024,Randy Adams,FND-006,517.08,Pledge write-off
+ADJ-0025,Linda Sparks,FND-006,-4876.84,Refund
+ADJ-0026,Rickey Daniels,FND-OLD-12,,Reclass
+ADJ-0027,Sarah Miller,FND-OLD-12,1131.0,Reclass
+ADJ-0028,Peter Stafford,FND-OLD-12,193.92,Correction
+ADJ-0029,Elizabeth Mendoza,FND-008,2484.98,Pledge write-off
+ADJ-0030,  JOSHUA ADAMS  ,FND-006,2661.53,Correction
+ADJ-0031,Alisha Williams,FND-006,2239.49,Refund
+ADJ-0032,  ASHLEY TANNER  ,FND-003,384.92,Reclass
+ADJ-0033,Aaron Walker,FND-008,4370.8,Refund
+ADJ-0034,James Gomez,FND-003,,Correction
+ADJ-0035,  THOMAS COHEN  ,FND-005,2472.65,Pledge write-off
+ADJ-0036,Michelle Valenzuela,FND-008,3294.31,Correction
+ADJ-0037,William Walker DVM,FND-OLD-12,4248.73,Correction
+ADJ-0038,  BILLY COOK  ,FND-008,-2884.56,Correction
+ADJ-0039,Tim Miller,FND-006,,Reclass
+ADJ-0040,Chris Patterson,FND-002,58.77,Reclass
+ADJ-0041,Christopher Coleman,FND-007,2044.55,Refund
+ADJ-0042,Melissa Weber,FND-008,-470.99,Correction
+ADJ-0043,  SHAWN NELSON  ,FND-006,-2301.71,Correction
+ADJ-0044,  MR. DEREK MEADOWS DDS  ,FND-004,-3453.13,Refund
+ADJ-0045,Shannon Spence,FND-003,2716.1,Correction
+ADJ-0046,Bridget Hernandez,FND-OLD-12,-3779.76,Correction
+ADJ-0047,Robert Bray,FND-004,-4556.35,Refund
+ADJ-0048,Ashley Simmons,FND-OLD-12,,Reclass
+ADJ-0049,  BRIANNA MORRIS  ,FND-007,187.0,Reclass
+ADJ-0050,Randall Gomez,FND-001,4743.57,Refund
+ADJ-0051,John Dudley DDS,FND-008,1940.17,Pledge write-off
+ADJ-0052,Brenda Raymond,FND-001,2502.0,Refund
+ADJ-0053,Janet Dunn,FND-007,-1233.96,Reclass
+ADJ-0054,Katherine Herrera,FND-005,,Pledge write-off
+ADJ-0055,Bradley Espinoza,FND-OLD-12,-3598.29,Pledge write-off
+ADJ-0056,Paula Shepherd,FND-OLD-12,1773.61,Correction
+ADJ-0057,  BRANDON WARD  ,FND-001,2625.27,Correction
+ADJ-0058,  SAMUEL COX  ,FND-004,-4005.38,Correction
+ADJ-0059,Casey Rodriguez,FND-001,-4743.33,Refund
+ADJ-0060,  HEATHER ATKINSON  ,FND-005,4815.59,Reclass
