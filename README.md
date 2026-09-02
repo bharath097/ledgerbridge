@@ -138,3 +138,7 @@ directly — the views are shaped for exactly this.
 | Documentation | `docs/` |
 | Version control / code review discipline | this repo's commit history, `.github/workflows/ci.yml` |
 | Jira / coordinated work | `project_management/backlog.csv` |
+
+## Status
+
+v1.0 — pipeline runs end to end, 8/8 data quality tests passing, dashboard and paginated report both build cleanly.
