@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LedgerBridge — Alteryx-Style Workflow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#152A20; --paper:#F1F1EC; --panel:#FBFBF8; --brass:#AC8548;
+    --text:#1B241D; --text-mute:#5C6A61; --line:#D8D8CD; --ok:#2F6B4D; --bad:#AA3B2D;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:'IBM Plex Sans',sans-serif;}
+  .mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;}
+  header{background:var(--ink);color:#EDEEE7;padding:26px 40px;}
+  .eyebrow{font-size:12px;letter-spacing:.02em;color:#D8C49C;margin-bottom:4px;}
+  h1{font-family:'Newsreader',serif;font-weight:500;font-size:24px;margin:0;color:#F6F5EE;}
+  .sub{font-size:12.5px;color:#A9B6AC;margin-top:6px;}
+  main{max-width:980px;margin:0 auto;padding:40px;}
+
+  .flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;justify-content:center;margin-bottom:36px;}
+  .node{
+    background:var(--panel);border:1px solid var(--text);width:150px;padding:16px 14px;
+    text-align:center;position:relative;
+  }
+  .node .step-label{font-size:10px;letter-spacing:.05em;color:var(--text-mute);margin-bottom:6px;}
+  .node .step-title{font-family:'Newsreader',serif;font-size:16px;margin-bottom:6px;}
+  .node .step-detail{font-size:11px;color:var(--text-mute);}
+  .arrow{width:34px;text-align:center;color:var(--brass);font-size:20px;}
+  .branch-wrap{display:flex;flex-direction:column;gap:10px;}
+  .branch-node{background:var(--panel);border:1px solid var(--line);padding:10px 12px;font-size:11.5px;text-align:left;width:180px;}
+  .branch-node.valid{border-left:3px solid var(--ok);}
+  .branch-node.invalid{border-left:3px solid var(--bad);}
+  .branch-node .n{font-family:'IBM Plex Mono',monospace;font-size:20px;}
+  .branch-node.valid .n{color:var(--ok);}
+  .branch-node.invalid .n{color:var(--bad);}
+
+  .kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--text);margin-bottom:32px;}
+  .kpi{padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .kpi:last-child{border-right:none;}
+  .kpi-label{font-size:11px;color:var(--text-mute);margin-bottom:6px;}
+  .kpi-value{font-size:22px;font-family:'IBM Plex Mono',monospace;}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:10px;}
+  thead th{text-align:left;font-weight:500;font-size:11px;color:var(--text-mute);border-bottom:1px solid var(--text);padding:8px 10px;}
+  tbody td{padding:9px 10px;border-bottom:1px solid var(--line);}
+  td.num{font-family:'IBM Plex Mono',monospace;text-align:right;}
+
+  .panel{background:var(--panel);border:1px solid var(--line);padding:20px 22px;margin-bottom:28px;}
+  .panel-title{font-size:14px;margin-bottom:2px;}
+  .panel-sub{font-size:11.5px;color:var(--text-mute);margin-bottom:14px;}
+
+  footer{max-width:980px;margin:0 auto;padding:0 40px 50px 40px;color:var(--text-mute);font-size:11px;border-top:1px solid var(--line);padding-top:14px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">LEDGERBRIDGE &middot; ALTERYX-STYLE DATA PREP</div>
+  <h1>Manual Adjustments Workflow</h1>
+  <div class="sub">alteryx_style_workflow.py &middot; run against donor_manual_adjustments.csv</div>
+</header>
+
+<main>
+  <div class="panel">
+    <div class="panel-title">Workflow Diagram</div>
+    <div class="panel-sub">Input &rarr; Clean &rarr; Join &rarr; Filter &rarr; Output, with a true/false error-routing branch — the same paradigm Alteryx uses, reproduced in Python</div>
+
+    <div class="flow">
+      <div class="node">
+        <div class="step-label">INPUT</div>
+        <div class="step-title">Manual Adjustments</div>
+        <div class="step-detail">60 rows, CSV</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="node">
+        <div class="step-label">CLEAN</div>
+        <div class="step-title">Normalize Names</div>
+        <div class="step-detail">trim, title-case</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="node">
+        <div class="step-label">JOIN</div>
+        <div class="step-title">Attach Fund Info</div>
+        <div class="step-detail">vs. dim_fund</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="node">
+        <div class="step-label">FILTER</div>
+        <div class="step-title">Valid / Invalid</div>
+        <div class="step-detail">true/false anchor</div>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="branch-wrap">
+        <div class="branch-node valid">
+          <div class="n">47</div>
+          OUTPUT &middot; clean_donor_adjustments.csv
+        </div>
+        <div class="branch-node invalid">
+          <div class="n">13</div>
+          OUTPUT &middot; errors_log.csv
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-strip">
+    <div class="kpi"><div class="kpi-label">RECORDS IN</div><div class="kpi-value">60</div></div>
+    <div class="kpi"><div class="kpi-label">VALID</div><div class="kpi-value" style="color:var(--ok)">47</div></div>
+    <div class="kpi"><div class="kpi-label">FLAGGED INVALID</div><div class="kpi-value" style="color:var(--bad)">13</div></div>
+    <div class="kpi"><div class="kpi-label">PASS RATE</div><div class="kpi-value">78%</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Error Breakdown</div>
+    <div class="panel-sub">Rows routed to the "invalid" output anchor, by reason</div>
+    <table>
+      <thead><tr><th>Error Reason</th><th style="text-align:right;">Row Count</th></tr></thead>
+      <tbody>
+        <tr><td>fund_id not found in dim_fund</td><td class="num">7</td></tr>
+        <tr><td>Missing adjustment_amount</td><td class="num">6</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  LedgerBridge &middot; alteryx_style_workflow.py output, rendered for review &middot; source: github.com/bharath097/ledgerbridge
+</footer>
+
+</body>
+</html>
