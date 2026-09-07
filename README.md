@@ -29,6 +29,17 @@ Open `dashboard/ledgerbridge_dashboard.html` in a browser when it's done.
 The SQL warehouse (`sql/01`–`06`) is written for Postgres and requires a
 live instance — see "Running against a real database" below.
 
+
+## Screenshots
+
+**Pipeline running end to end** — synthetic data generation, Alteryx-style workflow, data quality tests, dashboard build, all in one run:
+
+![Pipeline run](docs/screenshots/pipeline_run.png)
+
+**Data quality test suite passing** (`pytest tests/ -v`):
+
+![Tests passing](docs/screenshots/tests_passing.png)
+
 ## What's in here
 
 ```
