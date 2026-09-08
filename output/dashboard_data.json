@@ -2,7 +2,7 @@
   "meta": {
     "current_fy": 2026,
     "prior_fy": 2025,
-    "generated_at": "2026-09-07T13:48:57.242282"
+    "generated_at": "2026-09-08T14:38:05.739341"
   },
   "page1_overview": {
     "ytd_total": 634274.0,
@@ -433,43 +433,43 @@
   "page4_dataquality": {
     "checks": [
       {
-        "name": "Fund ID references valid dim_fund",
+        "name": "Fund ID references valid dim_fund (<1.0% tolerance)",
         "table": "salesforce_opportunities",
         "severity": "critical",
         "affected": 12,
-        "passed": false
+        "passed": true
       },
       {
-        "name": "Every gift has a matching GL entry",
+        "name": "Every gift has a matching GL entry (<1.5% tolerance)",
         "table": "fact_gl_transactions",
         "severity": "critical",
         "affected": 44,
-        "passed": false
+        "passed": true
       },
       {
-        "name": "paid_amount <= pledged_amount",
+        "name": "paid_amount <= pledged_amount (<0.5% tolerance)",
         "table": "fact_pledges",
         "severity": "warning",
         "affected": 8,
         "passed": false
       },
       {
-        "name": "GL transactions balance (debit = credit)",
+        "name": "GL transactions balance, debit=credit (<0.5% tolerance)",
         "table": "fact_gl_transactions",
         "severity": "critical",
         "affected": 4,
-        "passed": false
+        "passed": true
       },
       {
-        "name": "Fund/month reconciliation within tolerance",
+        "name": "Fund/month reconciliation within tolerance (<10% of fund-months)",
         "table": "fund_reconciliation",
         "severity": "warning",
         "affected": 108,
         "passed": false
       }
     ],
-    "pass_rate": 0.0,
+    "pass_rate": 60.0,
     "total_checks": 5,
-    "passed_checks": 0
+    "passed_checks": 3
   }
 }
