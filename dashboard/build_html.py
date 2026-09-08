@@ -271,6 +271,7 @@ HTML = """<!DOCTYPE html>
 
 <footer>
   Synthetic data generated for portfolio purposes &middot; models a university-foundation fundraising and fund-accounting environment &middot; built with PostgreSQL, Python, and a Power-BI-style semantic layer.
+  &middot; <a href="https://github.com/bharath097/ledgerbridge" style="color:var(--brass);">View full pipeline, SQL, and source code on GitHub &rarr;</a>
 </footer>
 
 <script>
