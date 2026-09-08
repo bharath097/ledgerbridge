@@ -2,7 +2,7 @@
   "meta": {
     "current_fy": 2026,
     "prior_fy": 2025,
-    "generated_at": "2026-09-07T06:20:50.148275"
+    "generated_at": "2026-09-07T13:48:57.242282"
   },
   "page1_overview": {
     "ytd_total": 634274.0,
@@ -121,39 +121,27 @@
     ],
     "top_donors": [
       {
-        "donor": "Amanda Ford",
+        "donor": "Melissa Anderson",
         "segment": "Active",
-        "lifetime": 3269.0,
+        "lifetime": 2551.0,
         "rfm_score": 2.67
       },
       {
-        "donor": "Mckee, Thompson and Richardson",
+        "donor": "Erin Figueroa",
         "segment": "Active",
-        "lifetime": 3174.0,
+        "lifetime": 2546.0,
         "rfm_score": 2.67
       },
       {
-        "donor": "frank campbell",
+        "donor": "Fowler-Nelson",
         "segment": "Active",
-        "lifetime": 2951.0,
+        "lifetime": 3299.0,
         "rfm_score": 2.67
       },
       {
-        "donor": "Bruce Martinez",
+        "donor": "Courtney Simmons",
         "segment": "Active",
-        "lifetime": 2856.0,
-        "rfm_score": 2.67
-      },
-      {
-        "donor": "Hernandez, Barber and Scott",
-        "segment": "Active",
-        "lifetime": 3049.0,
-        "rfm_score": 2.67
-      },
-      {
-        "donor": "Alexander Floyd",
-        "segment": "Active",
-        "lifetime": 3541.0,
+        "lifetime": 3395.0,
         "rfm_score": 2.67
       },
       {
@@ -163,21 +151,33 @@
         "rfm_score": 2.67
       },
       {
-        "donor": "David Washington",
+        "donor": "Bruce Martinez",
         "segment": "Active",
-        "lifetime": 2540.0,
+        "lifetime": 2856.0,
         "rfm_score": 2.67
       },
       {
-        "donor": "Eric Archer",
+        "donor": "James Spencer",
         "segment": "Active",
-        "lifetime": 2700.0,
+        "lifetime": 5146.0,
         "rfm_score": 2.67
       },
       {
-        "donor": "Keith Smith",
+        "donor": "Mckee, Thompson and Richardson",
         "segment": "Active",
-        "lifetime": 5387.0,
+        "lifetime": 3174.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Amanda Ford",
+        "segment": "Active",
+        "lifetime": 3269.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Stephen Fletcher",
+        "segment": "Active",
+        "lifetime": 2729.0,
         "rfm_score": 2.67
       }
     ],
