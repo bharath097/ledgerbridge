@@ -2,7 +2,7 @@
   "meta": {
     "current_fy": 2026,
     "prior_fy": 2025,
-    "generated_at": "2026-09-08T14:38:05.739341"
+    "generated_at": "2026-09-08T14:44:36.187254"
   },
   "page1_overview": {
     "ytd_total": 634274.0,
@@ -121,39 +121,21 @@
     ],
     "top_donors": [
       {
-        "donor": "Melissa Anderson",
+        "donor": "Devin Lang",
         "segment": "Active",
-        "lifetime": 2551.0,
+        "lifetime": 6656.0,
         "rfm_score": 2.67
       },
       {
-        "donor": "Erin Figueroa",
+        "donor": "Ashley Moore",
         "segment": "Active",
-        "lifetime": 2546.0,
+        "lifetime": 5996.0,
         "rfm_score": 2.67
       },
       {
-        "donor": "Fowler-Nelson",
+        "donor": "Keith Smith",
         "segment": "Active",
-        "lifetime": 3299.0,
-        "rfm_score": 2.67
-      },
-      {
-        "donor": "Courtney Simmons",
-        "segment": "Active",
-        "lifetime": 3395.0,
-        "rfm_score": 2.67
-      },
-      {
-        "donor": "Doris Thomas",
-        "segment": "Active",
-        "lifetime": 3397.0,
-        "rfm_score": 2.67
-      },
-      {
-        "donor": "Bruce Martinez",
-        "segment": "Active",
-        "lifetime": 2856.0,
+        "lifetime": 5387.0,
         "rfm_score": 2.67
       },
       {
@@ -163,21 +145,39 @@
         "rfm_score": 2.67
       },
       {
-        "donor": "Mckee, Thompson and Richardson",
+        "donor": "Kathleen Marshall",
         "segment": "Active",
-        "lifetime": 3174.0,
+        "lifetime": 4945.0,
         "rfm_score": 2.67
       },
       {
-        "donor": "Amanda Ford",
+        "donor": "Humphrey-Anderson",
         "segment": "Active",
-        "lifetime": 3269.0,
+        "lifetime": 4903.0,
         "rfm_score": 2.67
       },
       {
-        "donor": "Stephen Fletcher",
+        "donor": "Evan Jacobs",
         "segment": "Active",
-        "lifetime": 2729.0,
+        "lifetime": 4689.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Lori Ferguson",
+        "segment": "Active",
+        "lifetime": 4641.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Kenneth Anderson",
+        "segment": "Active",
+        "lifetime": 4549.0,
+        "rfm_score": 2.67
+      },
+      {
+        "donor": "Andrew Rodriguez",
+        "segment": "Active",
+        "lifetime": 4393.0,
         "rfm_score": 2.67
       }
     ],

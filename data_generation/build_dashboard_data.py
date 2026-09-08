@@ -107,8 +107,12 @@ def main():
     donor_summary["freq_rank"] = pd.qcut(donor_summary["frequency"].rank(method="first"), q=5, labels=False)
     donor_summary["monetary_rank"] = pd.qcut(donor_summary["lifetime"].rank(method="first"), q=5, labels=False)
     donor_summary["rfm_score"] = donor_summary[["recency_rank", "freq_rank", "monetary_rank"]].mean(axis=1).round(2)
+    # With only a few fiscal years of history, frequency has very few distinct
+    # values, so many donors land on the exact same RFM score. Break ties by
+    # actual lifetime giving so "top donors" reflects real dollar magnitude,
+    # not an arbitrary pick among a tied cohort.
     top_donors = donor_summary.merge(donors[["donor_id", "donor_name"]], on="donor_id", how="left") \
-        .sort_values("rfm_score", ascending=False).head(10)
+        .sort_values(["rfm_score", "lifetime"], ascending=[False, False]).head(10)
     top_donors_data = [
         {"donor": r.donor_name, "segment": r.segment, "lifetime": round(r.lifetime, 0), "rfm_score": r.rfm_score}
         for r in top_donors.itertuples()
