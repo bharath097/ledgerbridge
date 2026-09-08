@@ -40,6 +40,10 @@ live instance — see "Running against a real database" below.
 
 ![Tests passing](docs/screenshots/tests_passing.png)
 
+**Alteryx-style workflow** — Input → Clean → Join → Filter → Output, with a true/false error-routing branch:
+
+![Alteryx-style workflow](docs/screenshots/alteryx_workflow.png)
+
 ## What's in here
 
 ```
