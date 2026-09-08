@@ -2,7 +2,7 @@
   "meta": {
     "current_fy": 2026,
     "prior_fy": 2025,
-    "generated_at": "2026-09-08T14:44:36.187254"
+    "generated_at": "2026-09-08T14:48:42.772949"
   },
   "page1_overview": {
     "ytd_total": 634274.0,
@@ -252,8 +252,8 @@
   },
   "page3_reconciliation": {
     "status_counts": {
-      "Reconciled": 187,
-      "Needs Review": 108,
+      "Reconciled": 185,
+      "Needs Review": 103,
       "Timing Difference (OK)": 10
     },
     "by_fund_variance": [
@@ -347,15 +347,6 @@
       },
       {
         "fund": "Library Modernization Fund",
-        "fiscal_year": 2027,
-        "fiscal_month": 1,
-        "gifts_recorded": 0.0,
-        "gl_posted": 2571.0,
-        "variance": -2571.0,
-        "status": "Needs Review"
-      },
-      {
-        "fund": "Library Modernization Fund",
         "fiscal_year": 2025,
         "fiscal_month": 11,
         "gifts_recorded": 8958.0,
@@ -400,15 +391,6 @@
         "status": "Needs Review"
       },
       {
-        "fund": "Library Modernization Fund",
-        "fiscal_year": 2026,
-        "fiscal_month": 12,
-        "gifts_recorded": 9110.0,
-        "gl_posted": 6793.0,
-        "variance": 2317.0,
-        "status": "Needs Review"
-      },
-      {
         "fund": "Faculty Research Grants",
         "fiscal_year": 2025,
         "fiscal_month": 4,
@@ -424,6 +406,24 @@
         "gifts_recorded": 3820.0,
         "gl_posted": 6027.0,
         "variance": -2207.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "Annual Giving Fund",
+        "fiscal_year": 2026,
+        "fiscal_month": 11,
+        "gifts_recorded": 5758.0,
+        "gl_posted": 7944.0,
+        "variance": -2186.0,
+        "status": "Needs Review"
+      },
+      {
+        "fund": "First-Gen Student Support",
+        "fiscal_year": 2025,
+        "fiscal_month": 9,
+        "gifts_recorded": 7917.0,
+        "gl_posted": 5858.0,
+        "variance": 2060.0,
         "status": "Needs Review"
       }
     ],
@@ -464,7 +464,7 @@
         "name": "Fund/month reconciliation within tolerance (<10% of fund-months)",
         "table": "fund_reconciliation",
         "severity": "warning",
-        "affected": 108,
+        "affected": 103,
         "passed": false
       }
     ],

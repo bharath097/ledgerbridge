@@ -1,6 +1,6 @@
 import json
 
-with open("../output/dashboard_data.json") as f:
+with open("../output/dashboard_data.json", encoding="utf-8") as f:
     DATA = json.load(f)
 
 DATA_JSON = json.dumps(DATA)
@@ -10,7 +10,7 @@ HTML = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LedgerBridge — Donor-to-Ledger Reconciliation</title>
+<title>LedgerBridge &mdash; Donor-to-Ledger Reconciliation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
@@ -144,7 +144,7 @@ HTML = """<!DOCTYPE html>
 
     <div class="grid-2">
       <div class="panel">
-        <div class="panel-title">Monthly Giving — Current vs Prior Fiscal Year</div>
+        <div class="panel-title">Monthly Giving &mdash; Current vs Prior Fiscal Year</div>
         <div class="panel-sub">Fiscal year runs July&ndash;June</div>
         <canvas id="trendChart" height="230"></canvas>
       </div>
@@ -207,7 +207,7 @@ HTML = """<!DOCTYPE html>
 
   <!-- ============ PAGE 3 ============ -->
   <section class="page" id="p3">
-    <div class="section-title">Fund Reconciliation — Salesforce Gifts vs. NetSuite-style GL</div>
+    <div class="section-title">Fund Reconciliation &mdash; Salesforce Gifts vs. NetSuite-style GL</div>
     <div class="section-sub">Fund &times; fiscal-month comparison of recorded gift revenue against posted GL revenue.</div>
 
     <div class="kpi-strip" id="reconStrip"></div>
@@ -228,7 +228,7 @@ HTML = """<!DOCTYPE html>
 
     <div class="panel">
       <div class="panel-title">Flagged for Review</div>
-      <div class="panel-sub">Largest unexplained variances — drill-through starting point for accounting</div>
+      <div class="panel-sub">Largest unexplained variances &mdash; drill-through starting point for accounting</div>
       <table>
         <thead><tr><th>Fund</th><th>FY</th><th>Month</th><th style="text-align:right;">Gifts Recorded</th><th style="text-align:right;">GL Posted</th><th style="text-align:right;">Variance</th><th>Status</th></tr></thead>
         <tbody id="flaggedBody"></tbody>
@@ -271,7 +271,6 @@ HTML = """<!DOCTYPE html>
 
 <footer>
   Synthetic data generated for portfolio purposes &middot; models a university-foundation fundraising and fund-accounting environment &middot; built with PostgreSQL, Python, and a Power-BI-style semantic layer.
-  &middot; <a href="https://github.com/bharath097/ledgerbridge" style="color:var(--brass);">View full pipeline, SQL, and source code on GitHub &rarr;</a>
 </footer>
 
 <script>
@@ -453,7 +452,7 @@ HTML = HTML.replace("__DATA_JSON__", DATA_JSON)
 HTML = HTML.replace("__CURRENT_FY__", str(DATA["meta"]["current_fy"]))
 HTML = HTML.replace("__GEN_DATE__", DATA["meta"]["generated_at"][:10])
 
-with open("ledgerbridge_dashboard.html", "w") as f:
+with open("ledgerbridge_dashboard.html", "w", encoding="utf-8") as f:
     f.write(HTML)
 
 print("Dashboard written to ledgerbridge_dashboard.html")

@@ -216,6 +216,11 @@ def gen_gl_transactions(gifts_df, dim_fund, dim_subsidiary):
         # Most gifts post within 0-5 days (normal timing lag) -- NOT an error
         post_delay = random.choices([0, 1, 2, 3, 5, 20], weights=[40, 25, 15, 10, 7, 3])[0]
         post_date = g["gift_date"] + timedelta(days=int(post_delay))
+        # Clamp to the data window: a gift near fiscal year-end shouldn't post
+        # into a fiscal year that has no other data at all. Real GL feeds
+        # would still post it in the following period, but here it just needs
+        # to stay inside the range this dataset actually covers.
+        post_date = min(post_date, FY_END)
 
         fund_lookup = dim_fund.set_index("fund_id")
         restriction = fund_lookup["restriction_type"].get(g["fund_id"], "Restricted")  # orphaned funds default Restricted
